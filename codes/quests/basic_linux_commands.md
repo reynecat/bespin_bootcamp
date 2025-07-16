@@ -1,49 +1,123 @@
-연습문제 1: 기본 파일 시스템 탐색
-1-1. 현재 위치 확인 및 이동
-현재 작업 디렉터pw리의 절대 경로를 출력하시오.
-홈 디렉터리로 이동하시오.
-루트 디렉터리(/)로 이동하시오.
-다시 홈 디렉터리로 돌아가시오.
-1-2. 디렉터리 내용 확인
-현재 디렉터리의 파일과 폴더 목록을 출력하시오.
-숨김 파일을 포함한 모든 파일의 상세 정보를 출력하시오.
-/etc 디렉터리의 내용을 확인하시오.
-연습문제 2: 디렉터리 및 파일 생성
-2-1. 디렉터리 구조 생성
-다음과 같은 디렉터리 구조를 생성하시오:
-practice/
-
-├── documents/
-│   ├── reports/ls
-│   └── notes/
-├── images/
-└── backup/
-2-2. 파일 생성 및 내용 작성
-practice/documents/ 디렉터리에 readme.txt 파일을 생성하고 "Hello Linux!"라는 내용을 작성하시오.
-practice/notes/ 디렉터리에 memo.txt 파일을 생성하고 "Linux 명령어 연습 중"이라는 내용을 작성하시오.
-연습문제 3: 파일 내용 확인 및 조작
-3-1. 파일 내용 출력
-앞서 생성한 readme.txt 파일의 내용을 출력하시오.
-memo.txt 파일의 내용을 출력하시오.
-3-2. 파일 복사
-readme.txt 파일을 backup/ 디렉터리에 복사하시오.
-documents/ 디렉터리 전체를 backup/ 디렉터리에 복사하시오.
-연습문제 4: 파일 이동 및 이름 변경
-4-1. 파일 이동
-memo.txt 파일을 documents/ 디렉터리로 이동하시오.
-images/ 디렉터리를 practice/media/로 이름을 변경하시오.
-4-2. 파일 이름 변경
-readme.txt를 introduction.txt로 이름을 변경하시오.
-memo.txt를 study_notes.txt로 이름을 변경하시오.
-연습문제 5: 종합 실습
-5-1. 프로젝트 디렉터리 생성
-다음 요구사항에 따라 프로젝트 디렉터리를 생성하시오:
-my_project/라는 최상위 디렉터리 생성
-하위에 src/, docs/, tests/, config/ 디렉터리 생성
-src/ 디렉터리에 main.py 파일 생성 (내용: "# Main Python File")
-docs/ 디렉터리에 README.md 파일 생성 (내용: "# My Project Documentation")
-config/ 디렉터리에 settings.conf 파일 생성 (내용: "# Configuration File")
-5-2. 백업 및 정리
-전체 my_project/ 디렉터리를 my_project_backup/으로 복사하시오.
-my_project/src/main.py 파일을 my_project/src/app.py로 이름을 변경하시오.
-my_project/docs/README.md 파일을 my_project/ 디렉터리로 이동하시오.
+PS C:\Develops\quests> pwd
+Path
+----
+C:\Develops\quests
+PS C:\Develops\quests> mkdir powershell_practice
+디렉터리: C:\Develops\quests
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----      2025-07-15   오후 4:47                powershell_practice
+PS C:\Develops\quests> cd powershell_practice
+PS C:\Develops\quests\powershell_practice> mkdir documents, images, backup, temp
+디렉터리: C:\Develops\quests\powershell_practice
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----      2025-07-15   오후 4:47                documents
+d-----      2025-07-15   오후 4:47                images
+d-----      2025-07-15   오후 4:47                backup
+d-----      2025-07-15   오후 4:47                temp
+PS C:\Develops\quests\powershell_practice> cd documents
+PS C:\Develops\quests\powershell_practice\documents> ls
+PS C:\Develops\quests\powershell_practice\documents> cd ..
+PS C:\Develops\quests\powershell_practice> cd documents
+PS C:\Develops\quests\powershell_practice\documents> "Hello PowerShell" > hello.txt
+PS C:\Develops\quests\powershell_practice\documents> cd ..
+PS C:\Develops\quests\powershell_practice> cd images
+PS C:\Develops\quests\powershell_practice\images> New-Item -ItemType File -Name "빈파일"
+디렉터리: C:\Develops\quests\powershell_practice\images
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----      2025-07-15   오후 4:49              0 빈파일
+PS C:\Develops\quests\powershell_practice\images> cd ..
+PS C:\Develops\quests\powershell_practice> ls
+디렉터리: C:\Develops\quests\powershell_practice
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----      2025-07-15   오후 4:47                backup
+d-----      2025-07-15   오후 4:47                documents
+d-----      2025-07-15   오후 4:47                images
+d-----      2025-07-15   오후 4:47                temp
+PS C:\Develops\quests\powershell_practice> cd documents
+PS C:\Develops\quests\powershell_practice\documents> ls
+디렉터리: C:\Develops\quests\powershell_practice\documents
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----      2025-07-15   오후 4:48             38 hello.txt
+PS C:\Develops\quests\powershell_practice\documents> cat .\hello.txt
+Hello PowerShell
+PS C:\Develops\quests\powershell_practice\documents> ls
+디렉터리: C:\Develops\quests\powershell_practice\documents
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----      2025-07-15   오후 4:48             38 hello.txt
+PS C:\Develops\quests\powershell_practice\documents> cd ..
+PS C:\Develops\quests\powershell_practice> ls
+디렉터리: C:\Develops\quests\powershell_practice
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----      2025-07-15   오후 4:47                backup
+d-----      2025-07-15   오후 4:48                documents
+d-----      2025-07-15   오후 4:47                images
+d-----      2025-07-15   오후 4:47                temp
+PS C:\Develops\quests\powershell_practice> cp documents/hello.txt backup
+PS C:\Develops\quests\powershell_practice> cp -r images/ backup
+PS C:\Develops\quests\powershell_practice> cd temp
+PS C:\Develops\quests\powershell_practice\temp> New-Item -ItemType File -Name "test.txt"
+디렉터리: C:\Develops\quests\powershell_practice\temp
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----      2025-07-15   오후 4:52              0 test.txt
+PS C:\Develops\quests\powershell_practice\temp> cd ..
+PS C:\Develops\quests\powershell_practice> cp  temp/test.txt documents
+PS C:\Develops\quests\powershell_practice> cd doucments
+cd : 'C:\Develops\quests\powershell_practice\doucments' 경로는 존재하지 않으므로 찾을 수 없습니다.
+위치 줄:1 문자:1
++ cd doucments
++ ~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Develops\que...ctice\doucments:String) [Set-Location], ItemNotFoundE
+   xception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+PS C:\Develops\quests\powershell_practice> cd documents
+PS C:\Develops\quests\powershell_practice\documents> mv test.txt move_file.txt
+PS C:\Develops\quests\powershell_practice\documents> cd ..
+PS C:\Develops\quests\powershell_practice> cd images
+PS C:\Develops\quests\powershell_practice\images> ls
+디렉터리: C:\Develops\quests\powershell_practice\images
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----      2025-07-15   오후 4:49              0 빈파일
+PS C:\Develops\quests\powershell_practice\images> mv 빈파일 picture1.jpg
+PS C:\Develops\quests\powershell_practice\images> cd ..
+PS C:\Develops\quests\powershell_practice> mv temp temporary
+PS C:\Develops\quests\powershell_practice> rm documents/moved_file.txt
+rm : 'C:\Develops\quests\powershell_practice\documents\moved_file.txt' 경로는 존재하지 않으므로 찾을 수 없습니다.
+위치 줄:1 문자:1
++ rm documents/moved_file.txt
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Develops\que...\moved_file.txt:String) [Remove-Item], ItemNotFoundEx
+   ception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.RemoveItemCommand
+PS C:\Develops\quests\powershell_practice> ls
+디렉터리: C:\Develops\quests\powershell_practice
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----      2025-07-15   오후 4:51                backup
+d-----      2025-07-15   오후 4:54                documents
+d-----      2025-07-15   오후 4:54                images
+d-----      2025-07-15   오후 4:52                temporary
+PS C:\Develops\quests\powershell_practice> cd documents
+PS C:\Develops\quests\powershell_practice\documents> rm .\move_file.txt
+PS C:\Develops\quests\powershell_practice\documents> cd ..
+PS C:\Develops\quests\powershell_practice> cd images
+PS C:\Develops\quests\powershell_practice\images> rm .\picture1.jpg
+PS C:\Develops\quests\powershell_practice\images> cd ..
+PS C:\Develops\quests\powershell_practice> rm temporary
+확인
+C:\Develops\quests\powershell_practice\temporary의 항목에는 하위 항목이 있으며 Recurse 매개 변수를 지정하지 않았습니다.
+계속하면 해당 항목과 모든 하위 항목이 제거됩니다. 계속하시겠습니까?
+[Y] 예(Y)  [A] 모두 예(A)  [N] 아니요(N)  [L] 모두 아니요(L)  [S] 일시 중단(S)  [?] 도움말 (기본값은 "Y"): y
+PS C:\Develops\quests\powershell_practice> rm backup
+확인
+C:\Develops\quests\powershell_practice\backup의 항목에는 하위 항목이 있으며 Recurse 매개 변수를 지정하지 않았습니다.
+계속하면 해당 항목과 모든 하위 항목이 제거됩니다. 계속하시겠습니까?
+[Y] 예(Y)  [A] 모두 예(A)  [N] 아니요(N)  [L] 모두 아니요(L)  [S] 일시 중단(S)  [?] 도움말 (기본값은 "Y"): y

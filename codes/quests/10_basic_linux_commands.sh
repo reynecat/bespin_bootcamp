@@ -1,130 +1,49 @@
-1번 문제
+~~연습문제 1: 기본 파일 시스템 탐색
+1-1. 현재 위치 확인 및 이동
+현재 작업 디렉터pw리의 절대 경로를 출력하시오.
+홈 디렉터리로 이동하시오.
+루트 디렉터리(/)로 이동하시오.
+다시 홈 디렉터리로 돌아가시오.
+1-2. 디렉터리 내용 확인
+현재 디렉터리의 파일과 폴더 목록을 출력하시오
+숨김 파일을 포함한 모든 파일의 상세 정보를 출력하시오.
+/etc 디렉터리의 내용을 확인하시오.
+연습문제 2: 디렉터리 및 파일 생성
+2-1.  디렉터리 구조 생성
+다음과 같은 디렉터리 구조를 생성하시오:
+practice/
 
-PS C:\Develops\quests> pwd
-Path
-----
-C:\Develops\quests
-PS C:\Develops\quests> cd ~
-PS C:\Users\Administrator> cd \
-PS C:\> cd ~
-PS C:\Users\Administrator> ls
-디렉터리: C:\Users\Administrator
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----      2025-07-14   오후 2:27                .docker
-d-----      2025-06-11   오후 5:48                .ms-ad
-d-----      2024-12-09  오전 10:40                .thumbnails
-d-----      2025-07-14  오전 11:56                .vscode
-d-r---      2025-06-11   오후 5:43                3D Objects
-d-r---      2025-06-11   오후 5:43                Contacts
-d-r---      2025-07-15  오전 11:04                Desktop
-d-r---      2025-07-14   오후 2:40                Documents
-d-r---      2025-07-15  오전 11:04                Downloads
-d-r---      2025-06-11   오후 5:43                Favorites
-d-r---      2025-06-11   오후 5:43                Links
-d-r---      2025-06-11   오후 5:43                Music
-d-r---      2023-11-07  오전 10:00                OneDrive
-d-r---      2025-07-14   오후 2:34                Pictures
-d-r---      2025-06-11   오후 5:43                Saved Games
-d-r---      2025-06-11   오후 5:43                Searches
-d-r---      2025-06-13   오전 9:41                Videos
-
-2번 문제
-
-PS C:\quests\pracitce> mkdir practice
-디렉터리: C:\quests\pracitce
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----      2025-07-15   오후 4:24                practice
-
-PS C:\quests\pracitce> mkdir documents
-디렉터리: C: \quests\pracitce
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----      2025-07-15   오후 4:15                documents
-
-PS C:\quests\pracitce> mkdir images, backup
-디렉터리: C:\Develops\quests
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----      2025-07-15   오후 4:15                images
-d-----      2025-07-15   오후 4:15                backup
-
-PS C:\quests\pracitce> cd documents
-PS C:\quests\pracitce\documents> mkdir reports, notes
-디렉터리: C:\quests\pracitce\documents
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----      2025-07-15   오후 4:15                reports
-d-----      2025-07-15   오후 4:15                notes
-
-PS C:\quests\pracitce\documents> "Hello Linux!" > readme.txt
-PS C:\quests\pracitce\documents> cd notes
-PS C:\quests\pracitce\documents\notes> "Linux 명령어 연습중" > memo.txt
-
-3번 문제
-
-PS C:\Develops\quests> cat practice\documents\readme.txt
-Hello Linux!
-PS C:\Develops\quests> cat practice\documents\notes\memo.txt
-Linux 명령어 연습중
-PS C:\Develops\quests> cp practice\documents\readme.txt practice\backup\
-PS C:\Develops\quests> cp -r practice\documents practice\backup\
-
-4번 문제
-PS C:\Develops\quests> mv practice\documents\notes\memo.txt practice\documents\
-PS C:\Develops\quests> mv practice\images practice\media
-PS C:\Develops\quests> cd practice\documents
-PS C:\Develops\quests\practice\documents> mv readme.txt introduction.txt
-PS C:\Develops\quests\practice\documents> cd notes
-PS C:\Develops\quests\practice\documents\notes> ls
-PS C:\Develops\quests\practice\documents\notes> cd ..
-PS C:\Develops\quests\practice\documents> ls
-디렉터리: C:\Develops\quests\practice\documents
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----      2025-07-15   오후 4:29                notes
-d-----      2025-07-15   오후 4:15                reports
--a----      2025-07-15   오후 4:16             30 introduction.txt
--a----      2025-07-15   오후 4:16             32 memo.txt
-PS C:\Develops\quests\practice\documents> mv memo.txt study_notes.txt
-
-5번 문제
-PS C:\Develops\quests> mkdir my_project
-디렉터리: C:\Develops\quests
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----      2025-07-15   오후 4:34                my_project
-PS C:\Develops\quests> mkdir my_project\src
-디렉터리: C:\Develops\quests\my_project
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----      2025-07-15   오후 4:34                src
-PS C:\Develops\quests> mkdir my_project\docs
-디렉터리: C:\Develops\quests\my_project
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----      2025-07-15   오후 4:34                docs
-PS C:\Develops\quests> mkdir my_project\tests
-디렉터리: C:\Develops\quests\my_project
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----      2025-07-15   오후 4:34                tests
-PS C:\Develops\quests> mkdir my_project\config
-디렉터리: C:\Develops\quests\my_project
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----      2025-07-15   오후 4:34                config
-PS C:\Develops\quests> cd my_project\src
-PS C:\Develops\quests\my_project\src> "# Main Python File" > main.py
-PS C:\Develops\quests\my_project\src> cd ..\docs
-PS C:\Develops\quests\my_project\docs> "# My Project Documentation" > README.md
-PS C:\Develops\quests\my_project\docs> cd ..\config
-PS C:\Develops\quests\my_project\config> "# Configuration File" > settings.conf
-PS C:\Develops\quests\my_project\config> cd ..\..
-PS C:\Develops\quests> cp -r my_project my_project_backup
-PS C:\Develops\quests> cd my_project\src
-PS C:\Develops\quests\my_project\src> mv main.py app.py
-PS C:\Develops\quests\my_project\src> cd ..\..
-PS C:\Develops\quests> mv my_project\docs\README.md my_project\
-PS C:\Develops\quests>
+├── documents/
+│   ├── reports/ls
+│   └── notes/
+├── images/
+└── backup/””
+2-2. 파일 생성 및 내용 작성
+practice/documents/ 디렉터리에 readme.txt 파일을 생성하고 "Hello Linux!"라는 내용을 작성하시오.
+practice/notes/ 디렉터리에 memo.txt 파일을 생성하고 "Linux 명령어 연습 중"이라는 내용을 작성하시오.
+연습문제 3: 파일 내용 확인 및 조작
+3-1. 파일 내용 출력
+앞서 생성한 readme.txt 파일의 내용을 출력하시오.
+memo.txt 파일의 내용을 출력하시오.
+3-2. 파일 복사
+readme.txt 파일을 backup/ 디렉터리에 복사하시오.
+documents/ 디렉터리 전체를 backup/ 디렉터리에 복사하시오.
+연습문제 4: 파일 이동 및 이름 변경
+4-1. 파일 이동
+memo.txt 파일을 documents/ 디렉터리로 이동하시오.
+images/ 디렉터리를 practice/media/로 이름을 변경하시오.
+4-2. 파일 이름 변경
+readme.txt를 introduction.txt로 이름을 변경하시오.
+memo.txt를 study_notes.txt로 이름을 변경하시오.
+연습문제 5: 종합 실습
+5-1. 프로젝트 디렉터리 생성
+다음 요구사항에 따라 프로젝트 디렉터리를 생성하시오:
+my_project/라는 최상위 디렉터리 생성
+하위에 src/, docs/, tests/, config/ 디렉터리 생성
+src/ 디렉터리에 main.py 파일 생성 (내용: "# Main Python File")
+docs/ 디렉터리에 README.md 파일 생성 (내용: "# My Project Documentation")
+config/ 디렉터리에 settings.conf 파일 생성 (내용: "# Configuration File")
+5-2. 백업 및 정리
+전체 my_project/ 디렉터리를 my_project_backup/으로 복사하시오.
+my_project/src/main.py 파일을 my_project/src/app.py로 이름을 변경하시오.
+my_project/docs/README.md 파일을 my_project/ 디렉터리로 이동하시오.
