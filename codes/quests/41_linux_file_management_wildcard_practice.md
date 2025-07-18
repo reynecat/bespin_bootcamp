@@ -40,52 +40,6 @@ mkdir archives backup logs images documents scripts
 
 ---
 
-~~~
-
-├── archives
-├── backup
-├── backup_2023.tar
-├── backup_2024.tar
-├── changelog.md
-├── config.conf
-├── data1.csv
-├── data2.csv
-├── data3.csv
-├── data_old.csv
-├── document.pdf
-├── documents
-├── file_001.dat
-├── file_002.dat
-├── file_010.dat
-├── final_report.txt
-├── image1.jpg
-├── image2.jpg
-├── image3.png
-├── images
-├── license.txt
-├── log_access.txt
-├── log_error.txt
-├── logs
-├── log_system.txt
-├── new_report.txt
-├── old_report.txt
-├── photo.gif
-├── presentation.ppt
-├── readme.md
-├── report1.txt
-├── report2.txt
-├── report3.txt
-├── script1.sh
-├── script2.sh
-├── scripts
-├── spreadsheet.xls
-├── temp1.tmp
-├── temp2.tmp
-├── temp3.tmp
-└── test_script.sh
-
-~~~
-
 ## 1\. mkdir 명령어 와일드카드 실습
 
 ### 1-1. 연도별 백업 디렉터리 생성
@@ -97,7 +51,8 @@ mkdir archives backup logs images documents scripts
 \# 명령어를 작성하세요:
 
 ~~~
-[deft@localhost wildcard_file_practice]$ mkdir backup\_20{20,21,22,23,24}
+
+[deft@localhost wildcard_file_practice]$ mkdir backup_{2020..2024}
 
 ~~~
 
@@ -108,20 +63,21 @@ mkdir archives backup logs images documents scripts
 \# 예: logs/log\_01, logs/log\_02, ..., logs/log\_12
 
 \# 명령어를 작성하세요:
-
-~~~
-[deft@localhost wildcard_file_practice]$ mkdir ./logs/log\_{01..12}
 ~~~
 
+[deft@localhost wildcard_file_practice]$  mkdir logs/log_{01..12}
+
+~~~
 ### 1-3. 프로젝트별 디렉터리 생성
 
 \# project\_A, project\_B, project\_C 디렉터리를 한 번에 생성하세요
 
 \# 명령어를 작성하세요:
+~~~
 
-~~~
-[deft@localhost wildcard_file_practice]$ mkdir ./project\_{A,B,C}
-~~~
+[deft@localhost wildcard_file_practice]$ project_{A,B,C}
+
+~~~~
 
 ### 1-4. 계층적 디렉터리 생성
 
@@ -132,8 +88,11 @@ mkdir archives backup logs images documents scripts
 \# 명령어를 작성하세요:
 
 ~~~
-mkdir data && cd data  && mkdir 2024 && cd 2024 && mkdir 01 02 03
+
+mkdir -p data/2024/{01,02,03}
+
 ~~~
+
 ---
 
 ## 2\. cp 명령어 와일드카드 실습
@@ -145,7 +104,9 @@ mkdir data && cd data  && mkdir 2024 && cd 2024 && mkdir 01 02 03
 \# 명령어를 작성하세요:
 
 ~~~
-[deft@localhost wildcard_file_practice]$ cp -r *.txt ./backup/
+
+cp *.txt backup/
+
 ~~~
 
 ### 2-2. 특정 패턴 파일 복사
@@ -155,17 +116,21 @@ mkdir data && cd data  && mkdir 2024 && cd 2024 && mkdir 01 02 03
 \# 명령어를 작성하세요:
 
 ~~~
-[deft@localhost wildcard_file_practice]$ cp -r report* ./documents/
+
+cp report* documents/
+
 ~~~
 
 ### 2-3. 숫자가 포함된 파일 복사
 
 \# 파일명에 숫자가 포함된 모든 이미지 파일(.jpg, .png)을 images 디렉터리로 복사하세요
 
-\# 명령어를 작성하세요
+\# 명령어를 작성하세요:
 
 ~~~
-[deft@localhost wildcard_file_practice]$ cp *.{jpg,png} ./images/
+
+cp *[0-9]*.jpg *[0-9]*.png images/
+
 ~~~
 
 ### 2-4. 특정 범위의 파일 복사
@@ -175,9 +140,10 @@ mkdir data && cd data  && mkdir 2024 && cd 2024 && mkdir 01 02 03
 \# 명령어를 작성하세요:
 
 ~~~
-[deft@localhost wildcard_file_practice]$ cp data{1,2,3}.csv ./backup/
-~~~
 
+cp data[1-3].csv backup/
+
+~~~
 
 ### 2-5. 복합 조건 파일 복사
 
@@ -186,7 +152,9 @@ mkdir data && cd data  && mkdir 2024 && cd 2024 && mkdir 01 02 03
 \# 명령어를 작성하세요:
 
 ~~~
-[deft@localhost wildcard_file_practice]$ cp log\_*.txt ./logs/
+
+cp log_*.txt logs/
+
 ~~~
 
 ---
@@ -197,14 +165,14 @@ mkdir data && cd data  && mkdir 2024 && cd 2024 && mkdir 01 02 03
 
 \# 모든 .tmp 파일을 temp 디렉터리로 이동하세요 (mkdir temp 먼저 실행)
 
-
-
 \# 명령어를 작성하세요:
 
 ~~~
-[deft@localhost wildcard_file_practice]$ mv  *.tmp ./temp/
-~~~
 
+mkdir temp
+mv *.tmp temp/
+
+~~~
 
 ### 3-2. 백업 파일 정리
 
@@ -213,7 +181,9 @@ mkdir data && cd data  && mkdir 2024 && cd 2024 && mkdir 01 02 03
 \# 명령어를 작성하세요:
 
 ~~~
-[deft@localhost wildcard_file_practice]$ mv backup\_* ./archives
+
+[deft@localhost wildcard_file_practice]$  mv backup_* archives/
+
 ~~~
 
 ### 3-3. 스크립트 파일 정리
@@ -223,7 +193,9 @@ mkdir data && cd data  && mkdir 2024 && cd 2024 && mkdir 01 02 03
 \# 명령어를 작성하세요:
 
 ~~~
-mv *.sh ./scripts
+
+[deft@localhost wildcard_file_practice]$ mv *.sh scripts/
+
 ~~~
 
 ### 3-4. 특정 패턴 파일 이동
@@ -232,16 +204,26 @@ mv *.sh ./scripts
 
 \# (data 디렉터리가 없다면 먼저 생성)
 
-~~~
-[deft@localhost wildcard_file_practice]$ mv file\_*.dat ./data
+\# 명령어를 작성하세요:
+
 ~~~
 
+mkdir -p data
+mv file_???.dat data/
+
+~~~
 
 ### 3-5. 조건부 파일 이동
 
 \# "old\_" 또는 "new\_"로 시작하는 모든 파일을 archives 디렉터리로 이동하세요
 
 \# 명령어를 작성하세요:
+
+~~~
+
+mv old_* new_* archives/
+
+~~~
 
 ---
 
@@ -253,17 +235,35 @@ mv *.sh ./scripts
 
 \# 명령어를 작성하세요:
 
+~~~
+
+[deft@localhost wildcard_file_practice]$ rm ./temp/*.tmp
+
+~~~
+
 ### 4-2. 특정 패턴 파일 삭제
 
 \# "temp"로 시작하는 모든 파일을 삭제하세요
 
 \# 명령어를 작성하세요:
 
+~~~
+
+[deft@localhost wildcard_file_practice]$ rm -r temp*
+
+~~~
+
 ### 4-3. 백업 파일 정리
 
 \# 2023년 백업 파일만 삭제하세요 (backup\_2023.tar)
 
 \# 명령어를 작성하세요:
+
+~~~
+
+[deft@localhost wildcard_file_practice]$ rm ./archives/backup_2023.tar
+
+~~~
 
 ### 4-4. 조건부 파일 삭제
 
@@ -273,6 +273,11 @@ mv *.sh ./scripts
 
 \# 명령어를 작성하세요:
 
+~~~
+
+[deft@localhost wildcard_file_practice]$ rm *.conf
+
+~~~
 ---
 
 ## 5\. 복합 명령어 실습
@@ -283,9 +288,22 @@ mv *.sh ./scripts
 
 \# 2단계: 모든 문서 파일(.pdf, .ppt, .xls, .md)을 documents 디렉터리로 이동
 
+mv *.pdf *.ppt *.xls *.md documents/
+
 \# 3단계: 모든 데이터 파일(.csv, .dat)을 data 디렉터리로 이동 (없으면 생성)
 
 \# 명령어들을 작성하세요:
+
+~~~
+
+mv *.jpg *.png *.gif images/
+mv *.pdf *.ppt *.xls *.md documents/
+mkdir -p data
+mv *.csv data/ && mv ./data/*.dat data/
+
+~~~
+
+
 
 ### 5-2. 백업 및 정리 작업
 
@@ -296,6 +314,16 @@ mv *.sh ./scripts
 \# 3단계: 원본 설정 파일들을 삭제
 
 \# 명령어들을 작성하세요:
+
+~~~
+
+mkdir -p backup/txt_files
+cp *.txt backup/txt_files/
+mkdir -p backup/config
+cp *.conf backup/config/
+rm *.conf
+
+~~~
 
 ### 5-3. 날짜별 로그 정리
 
@@ -309,6 +337,15 @@ mv *.sh ./scripts
 
 \# 명령어들을 작성하세요:
 
+~~~
+
+[deft@localhost wildcard_file_practice]$ mkdir -p logs/{error,access,system}
+[deft@localhost wildcard_file_practice]$ mv log_error.txt logs/error/
+[deft@localhost wildcard_file_practice]$ mv log_access.txt logs/access/
+[deft@localhost wildcard_file_practice]$ mv log_system.txt logs/system/
+
+~~~
+
 ---
 
 ## 6\. 고급 와일드카드 실습
@@ -319,17 +356,37 @@ mv *.sh ./scripts
 
 \# 명령어를 작성하세요:
 
+~~~
+
+[deft@localhost wildcard_file_practice]$ mkdir -p processed
+[deft@localhost wildcard_file_practice]$ cp ./data/data*[0-9]* processed/ && cp ./documents/report*[0-9]* processed/
+
+
+~~~
+
 ### 6-2. 제외 패턴 활용
 
 \# 모든 파일 중에서 "final\_"로 시작하지 않는 .txt 파일들을 draft 디렉터리로 이동하세요
 
 \# 명령어를 작성하세요:
 
+~~~
+
+[deft@localhost wildcard_file_practice]$ find . -name "*.txt" -not -path "./draft/*" -not -name "final_*" -exec mv {} draft/ \;
+
+~~~
+
 ### 6-3. 범위 지정 패턴
 
 \# 파일명에 001부터 009까지의 숫자가 포함된 파일들을 single\_digit 디렉터리로 복사하세요
 
 \# 명령어를 작성하세요:
+
+~~~
+
+find . -name "*00[1-9]*" -exec cp {} single_digit/ \;
+
+~~~
 
 ---
 
@@ -349,6 +406,19 @@ mv *.sh ./scripts
 
 \# 명령어들을 작성하세요:
 
+~~~
+
+mkdir -p completed
+mv report*.txt completed/
+mkdir -p ongoing
+mv temp* *_draft ongoing/ 2>/dev/null || true
+mkdir -p archive
+// 여기서부터
+mv backup_* archive/
+rm *.tmp 2>/dev/null || true
+
+~~~
+
 ### 7-2. 로그 관리 시나리오
 
 \# 시나리오: 서버 로그 정리
@@ -363,6 +433,17 @@ mv *.sh ./scripts
 
 \# 명령어들을 작성하세요:
 
+~~~
+
+mkdir -p logs/2024
+mv *2024* logs/2024/
+mkdir -p logs/errors
+cp *error* logs/errors/ 2>/dev/null || true
+rm *2023* 2>/dev/null || true
+mkdir -p logs/system
+mv *system* logs/system/ 2>/dev/null || true
+
+~~~
 ### 7-3. 개발 환경 정리 시나리오
 
 \# 시나리오: 개발 프로젝트 구조 정리
@@ -377,82 +458,23 @@ mv *.sh ./scripts
 
 \# 명령어들을 작성하세요:
 
+~~~
+
+mv *.sh scripts/
+mkdir -p config
+cp *.conf *.config config/ 2>/dev/null || true
+mkdir -p docs
+mv *.md *.txt docs/
+mkdir -p data
+mv *.csv *.dat data/
+
+~~~
+
 ---
-
-## 8\. 보너스 문제
-
-### 8-1. 한 줄 명령어 도전
-
-\# 모든 이미지 파일을 images 디렉터리로 이동하고, 
-
-\# 모든 문서 파일을 docs 디렉터리로 이동하는 작업을 
-
-\# 한 줄의 명령어로 실행하세요 (세미콜론 또는 && 사용)
-
-\# 명령어를 작성하세요:
-
-### 8-2. 조건부 실행
-
-\# images 디렉터리가 존재하면 모든 .jpg 파일을 이동하고,
 
 \# 존재하지 않으면 디렉터리를 생성한 후 이동하는 명령어를 작성하세요
 
 \# 명령어를 작성하세요:
-
-### 8-3. 파일 개수 확인 후 실행
-
-\# .txt 파일이 5개 이상 있으면 backup 디렉터리로 복사하고,
-
-\# 그렇지 않으면 "파일이 부족합니다" 메시지를 출력하세요
-
-\# 명령어를 작성하세요:
-
----
-
-## 9\. 검증 명령어
-
-각 문제를 해결한 후 다음 명령어들로 결과를 확인하세요:
-
-\# 디렉터리 구조 확인
-
-ls \-la
-
-\# 특정 디렉터리 내용 확인
-
-ls \-la backup/
-
-ls \-la images/
-
-ls \-la documents/
-
-\# 파일 개수 확인
-
-ls \*.txt | wc \-l
-
-ls \*.jpg | wc \-l
-
-\# 전체 파일 목록 확인
-
-find . \-type f | sort
-
----
-
-## 10\. 주의사항
-
-⚠️ **실습 시 주의사항:**
-
-- rm 명령어 사용 시 특히 주의하세요  
-- 중요한 파일은 미리 백업하세요  
-- 와일드카드 패턴이 의도한 파일들만 선택하는지 먼저 `ls` 명령어로 확인하세요  
-- 실제 서버에서는 더욱 신중히 실행하세요
-
-**패턴 확인 방법:**
-
-\# 실제 명령 실행 전에 패턴이 올바른지 확인
-
-echo cp \*.txt backup/    \# 실제로는 실행되지 않고 명령어만 출력
-
-ls \*.txt                 \# 선택될 파일들 미리 확인
 
 ---
 
