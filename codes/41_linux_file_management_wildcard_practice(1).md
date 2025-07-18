@@ -237,7 +237,7 @@ mv old_* new_* archives/
 
 ~~~
 
-rm *.tmp
+[deft@localhost wildcard_file_practice]$ rm -r *.tmp
 
 ~~~
 
@@ -249,7 +249,7 @@ rm *.tmp
 
 ~~~
 
-rm temp*
+[deft@localhost wildcard_file_practice]$ rm -r temp*
 
 ~~~
 
@@ -261,7 +261,7 @@ rm temp*
 
 ~~~
 
-rm backup_2023.tar
+[deft@localhost wildcard_file_practice]$ rm ./archives/backup_2023.tar
 
 ~~~
 
@@ -275,7 +275,7 @@ rm backup_2023.tar
 
 ~~~
 
-rm *.conf
+[deft@localhost wildcard_file_practice]$ rm *.conf
 
 ~~~
 ---
@@ -299,7 +299,7 @@ mv *.pdf *.ppt *.xls *.md documents/
 mv *.jpg *.png *.gif images/
 mv *.pdf *.ppt *.xls *.md documents/
 mkdir -p data
-mv *.csv *.dat data/
+mv *.csv data/ && mv ./data/*.dat data/
 
 ~~~
 
@@ -339,11 +339,10 @@ rm *.conf
 
 ~~~
 
-mkdir -p logs/{error,access,system}
-
-mv log_error.txt logs/error/
-mv log_access.txt logs/access/
-mv log_system.txt logs/system/
+[deft@localhost wildcard_file_practice]$ mkdir -p logs/{error,access,system}
+[deft@localhost wildcard_file_practice]$ mv log_error.txt logs/error/
+[deft@localhost wildcard_file_practice]$ mv log_access.txt logs/access/
+[deft@localhost wildcard_file_practice]$ mv log_system.txt logs/system/
 
 ~~~
 
@@ -359,8 +358,9 @@ mv log_system.txt logs/system/
 
 ~~~
 
-mkdir -p processed
-cp {report,data}*[0-9]* processed/
+[deft@localhost wildcard_file_practice]$ mkdir -p processed
+[deft@localhost wildcard_file_practice]$ cp ./data/data*[0-9]* processed/ && cp ./documents/report*[0-9]* processed/
+
 
 ~~~
 
