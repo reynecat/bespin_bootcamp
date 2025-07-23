@@ -272,13 +272,19 @@ Seoul:Analyst
 
 ~~~
 
-
+echo "Hello World Linux" | tr 'A-Z' 'a-z'
 
 ~~~
 
 **6-2.** `employees.txt` 파일의 콜론(:)을 탭 문자로 변환하세요.
 
 * \# 명령어를 작성하세요
+
+~~~
+
+tr ':' '\t' < employees.txt
+
+~~~
 
 
 **6-3.** "Linux-System-Administration" 문자열에서 하이픈(-)을 모두 제거하세요.
@@ -287,13 +293,26 @@ Seoul:Analyst
     
   ---
 
+
+~~~
+
+echo "Linux-System-Administration" | tr -d '-'
+
+~~~
   ## **문제 7: tail 명령어 활용 (기초)**
 
 **7-1.** `system.log` 파일의 마지막 3줄만 출력하세요.
 
 * \# 명령어를 작성하세요
 
+~~~
 
+[deft@localhost text_processing_practice]$ tail -n3 system.log
+2024-01-15 09:50 ERROR File not found: config.xml
+2024-01-15 09:55 WARNING Disk space low
+2024-01-15 10:00 INFO System backup started
+
+~~~
 
 
 **7-2.** `scores.txt` 파일의 마지막 5개 점수를 출력하세요.
@@ -304,10 +323,7 @@ Seoul:Analyst
 
 ~~~
 
-[deft@localhost text_processing_practice]$ tail -n3 system.log
-2024-01-15 09:50 ERROR File not found: config.xml
-2024-01-15 09:55 WARNING Disk space low
-2024-01-15 10:00 INFO System backup started
+[deft@localhost text_processing_practice]$ tail -n5 scores.txt
 
 ~~~
 
@@ -363,7 +379,7 @@ Seoul:Analyst
 
 ~~~
 
-
+grep "Seoul" employees.txt | cut -d':' -f1
 
 ~~~
 
@@ -371,17 +387,34 @@ Seoul:Analyst
 
 * \# 명령어를 작성하세요
 
+~~~
+
+grep -E "ERROR|WARNING" system.log | wc -l
+
+~~~
+
 
 **9-3.** `scores.txt` 파일에서 150점 이상인 점수의 개수를 확인하세요.
 
 * \# 명령어를 작성하세요
 
+~~~
+
+sort -n scores.txt | tail -n +4 | wc -l
+
+~~~
 
 **9-4.** `employees.txt` 파일에서 나이를 기준으로 정렬한 후 가장 나이가 많은 직원의 이름을 출력하세요.
 
 * \# 명령어를 작성하세요  
     
   ---
+
+~~~
+
+sort -t':' -k2 -nr employees.txt | cut -d':' -f1 | head -n 1
+
+~~~
 
   ## **문제 10: 리다이렉션 활용 (중급)**
 
@@ -425,6 +458,7 @@ Seoul:Analyst
 
 ~~~
 
+cut -d':' -f3 employees.txt | sort | uniq -c | sort -nr
 
 ~~~
 
@@ -432,10 +466,22 @@ Seoul:Analyst
 
 * \# 명령어를 작성하세요
 
+~~~
+
+cut -d' ' -f2 system.log | cut -d':' -f1 | sort | uniq -c | sort -n
+
+~~~
+
 
 **11-3.** `scores.txt` 파일에서 100점 이상인 점수들만 추출하여 평균을 구하세요. (hint: `bc` 명령어 사용)
 
 * \# 명령어를 작성하세요
+
+~~~
+
+sort -n scores.txt | tail -n +2 | tr '\n' '+' | sed 's/+$//' | bc
+
+~~~
 
 
 **11-4.** 모든 `.txt` 파일에서 가장 많이 사용된 단어 상위 5개를 찾으세요.
@@ -443,6 +489,12 @@ Seoul:Analyst
 * \# 명령어를 작성하세요  
     
   ---
+
+~~~
+
+cat *.txt | tr ' :-' '\n' | sort | uniq -c | sort -nr | head -n 5
+
+~~~
 
   ## **문제 12: 실무 시나리오 (최고급)**
 
@@ -456,6 +508,11 @@ Seoul:Analyst
 * \# 가장 많이 접속한 IP 주소를 찾으세요  
 * \# 명령어를 작성하세요
 
+~~~
+
+
+
+~~~
 
 **12-2.** 시스템 사용자 분석
 
