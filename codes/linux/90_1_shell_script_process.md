@@ -35,40 +35,52 @@
 ~~~
 
 
+#!/bin/bash
+
 PORT="8000"
-LOGFILE="servers.log"
+LOGFILE="server.log"
 PIDFILE="server.pid"
 
 if [ "$1" == "start" ]; then
-        nohup python3 -m http.server $PORT > $LOGFILE 2>&1 & PID=$!
-        echo $PID > $PIDFILE
-        echo "The server started in the background."
+   nohup python3 -m http.server $PORT > $LOGFILE 2>&1 &
+   PID=$!
+   echo $PID > $PIDFILE
+   echo "서버가 백그라운드에서 시작되었습니다."
 
 elif [ "$1" == "status" ]; then
-        PID=$(cat $PIDFILE)
-        ps -p "$PID"
-        echo "Server is running. PID: "$PID" " 
+   if [ -f "$PIDFILE" ]; then
+       PID=$(cat $PIDFILE)
+       if ps -p "$PID" > /dev/null 2>&1; then
+           echo "서버 실행 중입니다. PID: $PID"
+       fi
+   fi
 
 elif [ "$1" == "stop" ]; then
-        PID=$(cat $PIDFILE)
-        kill "$PID"
-        rm "$PIDFILE"
-        echo "Server shut down."
+   if [ -f "$PIDFILE" ]; then
+       PID=$(cat $PIDFILE)
+       kill "$PID" 2>/dev/null
+       rm -f "$PIDFILE"
+       echo "서버가 종료되었습니다."
+   fi
 
 elif [ "$1" == "restart" ]; then
-        PID=$(cat $PIDFILE)
-        kill "$PID"
-        rm "$PIDFILE"
-        echo "Server shut down."
-        nohup python3 -m http.server $PORT > $LOGFILE 2>&1 & PID=$!
-        echo $PID > $PIDFILE
-        echo "The server started in the background."
+   # stop
+   if [ -f "$PIDFILE" ]; then
+       PID=$(cat $PIDFILE)
+       kill "$PID" 2>/dev/null
+       rm -f "$PIDFILE"
+       echo "서버가 종료되었습니다."
+   fi
+   # start
+   nohup python3 -m http.server $PORT > $LOGFILE 2>&1 &
+   PID=$!
+   echo $PID > $PIDFILE
+   echo "서버가 백그라운드에서 시작되었습니다."
 
 elif [ "$1" == "tail_log" ]; then
-        cat "$LOGFILE"
-        echo "Check log message"
-
+   tail -f "$LOGFILE"
 fi
+
 
 ~~~
 
